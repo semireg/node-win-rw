@@ -18,6 +18,37 @@
 // possibly remove
 #include <node_buffer.h>
 
+namespace{
+    /**
+     * Returns last error code and message string
+     */
+    std::string getLastErrorCodeAndMessage() {
+    	std::ostringstream s;
+    	DWORD erroCode = GetLastError();
+    	s << "code: " << erroCode;
+    	DWORD retSize;
+    	LPTSTR pTemp = NULL;
+    	retSize = FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER|
+                                FORMAT_MESSAGE_FROM_SYSTEM|
+                                FORMAT_MESSAGE_ARGUMENT_ARRAY,
+                                NULL,
+                                erroCode,
+                                LANG_NEUTRAL,
+                                (LPTSTR)&pTemp,
+                                0,
+                                NULL );
+        if (retSize && pTemp != NULL) {
+	    //pTemp[strlen(pTemp)-2]='\0'; //remove cr and newline character
+	    //TODO: check if it is needed to convert c string to std::string
+	    std::string stringMessage(pTemp);
+	    s << ", message: " << stringMessage;
+	    LocalFree((HLOCAL)pTemp);
+	}
+
+    	return s.str();
+    }
+}
+
 MY_NODE_MODULE_CALLBACK(WritePath)
 {
     MY_NODE_MODULE_HANDLESCOPE;
