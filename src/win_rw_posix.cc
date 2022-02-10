@@ -6,9 +6,6 @@
 #include <sstream>
 #include <node_version.h>
 
-#include <cups/cups.h>
-#include <cups/ppd.h>
-
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 MY_NODE_MODULE_CALLBACK(WritePath)

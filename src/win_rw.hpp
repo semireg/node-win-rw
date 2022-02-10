@@ -8,6 +8,25 @@
 
 #include <string>
 
+template<typename Type>
+class MemValueBase
+{
+public:
+    MemValueBase(): _value(NULL) {}
+
+    /** Destructor. The allocated memory will be deallocated
+    */
+    virtual ~MemValueBase() {}
+
+    Type * get() {return _value; }
+    Type * operator ->() { return &_value; }
+    operator bool() const { return (_value != NULL); }
+protected:
+    Type *_value;
+
+    virtual void free() {};
+};
+
 /**
  * try to extract String or buffer from v8 value
  * @param iV8Value - source v8 value
