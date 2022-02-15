@@ -4,15 +4,6 @@
 #include <nan.h>
 #include <node_version.h>
 
-#if NODE_VERSION_AT_LEAST(13, 0, 0)
-#  define MY_NODE_GET_OBJECT(object, id) object->Get(v8::Isolate::GetCurrent()->GetCurrentContext(), id).ToLocalChecked()
-#  define MY_NODE_SET_OBJECT(object, id, prop) object->Set(v8::Isolate::GetCurrent()->GetCurrentContext(), id, prop)
-#  define MY_NODE_SET_OBJECT_PROP(object, id, prop) MY_NODE_SET_OBJECT(object, V8_STRING_NEW_UTF8(id), prop)
-#else
-#  define MY_NODE_GET_OBJECT(object, id) object->Get(id)
-#  define MY_NODE_SET_OBJECT(object, id, prop) object->Set(id, prop)
-#  define MY_NODE_SET_OBJECT_PROP(object, id, prop) MY_NODE_SET_OBJECT(object, V8_STRING_NEW_UTF8(id), prop)
-#endif
 // NODE_MODULE_VERSION was incremented for v0.11
 
 #if NODE_VERSION_AT_LEAST(0, 11, 10)
@@ -21,7 +12,7 @@
 #  define MY_NODE_MODULE_HANDLESCOPE MY_NODE_MODULE_ISOLATE_DECL Nan::HandleScope scope
 #  define V8_VALUE_NEW(type, value)   v8::type::New(MY_NODE_MODULE_ISOLATE, value)
 #  define V8_VALUE_NEW_DEFAULT(type)   v8::type::New(MY_NODE_MODULE_ISOLATE)
-#  if NODE_MODULE_VERSION >= 73
+#  if NODE_MODULE_VERSION > 73
 #   define V8_STRING_NEW_UTF8(value)   v8::String::NewFromUtf8(MY_NODE_MODULE_ISOLATE, value).ToLocalChecked()
 #   define V8_STRING_NEW_2BYTES(value)   v8::String::NewFromTwoByte(MY_NODE_MODULE_ISOLATE, value).ToLocalChecked()
 #  else
