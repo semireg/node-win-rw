@@ -8,6 +8,11 @@
 
 #include <string>
 
+/** communicate directly with device using path 
+ */
+MY_NODE_MODULE_CALLBACK(ReadPath);
+MY_NODE_MODULE_CALLBACK(WritePath);
+
 template<typename Type>
 class MemValueBase
 {
@@ -35,9 +40,5 @@ protected:
  */
 bool getStringOrBufferFromV8Value(v8::Local<v8::Value> iV8Value, std::string &oData);
 
-/** communicate directly with device using path 
- */
-MY_NODE_MODULE_CALLBACK(ReadPath);
-MY_NODE_MODULE_CALLBACK(WritePath);
 
 #endif
