@@ -1,5 +1,5 @@
 {
-  "name": "@bensandee/node-win-rw",
+  "name": "@semireg/win-rw",
   "description": "Node.js Win-RW Bindings",
   "version": "0.0.3",
   "homepage": "https://github.com/bensandee/node-win-rw",
