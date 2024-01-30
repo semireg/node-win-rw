@@ -2,7 +2,7 @@
   "name": "@semireg/win-rw",
   "description": "Node.js Win-RW Bindings",
   "version": "0.0.3",
-  "homepage": "https://github.com/semireg/node-win-rw",
+  "homepage": "https://github.com/semireg/win-rw",
   "author": {
     "name": "Caylan Larson",
     "url": "https://semireg.com/",
@@ -11,7 +11,7 @@
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "git://github.com/semireg/node-win-rw.git"
+    "url": "git://github.com/semireg/win-rw.git"
   },
   "devDependencies": {
     "nodeunit": "*",
