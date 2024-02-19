@@ -1,2 +1,5 @@
+== 0.0.3
+* Updated node-gyp to better work with Visual Studio 2019
+
 == 0.0.1
-Initial release
+* Initial release
